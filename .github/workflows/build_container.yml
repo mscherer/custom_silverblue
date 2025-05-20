@@ -2,8 +2,8 @@ name: Build Docker image
 on:
   workflow_dispatch:
   push:
-    branches:
-      - main
+#    branches:
+#      - main
 #  schedule:
 #    - cron: "0 0 * * 0"
 
