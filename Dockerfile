@@ -1,2 +1,2 @@
-FROM quay.io/fedora-ostree-desktops/silverblue:42@sha256:e83ed9375cf7e08e0c6092ac9bf9317319ccde38dac0fc26bca2160bdf85039c
+FROM quay.io/fedora-ostree-desktops/silverblue:42@sha256:d93d19994150345c11c305cae39ee76eabc67b500cc1d3edfdacea3c35639e71
 RUN dnf install --setopt=install_weak_deps=false -y gnome-terminal htop mosh strace tcpdump vim wireguard-tools neovim && dnf clean all
