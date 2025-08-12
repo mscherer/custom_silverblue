@@ -15,5 +15,5 @@ jobs:
       - name: Enable automerge
         run: gh pr merge --rebase --auto  ${PR_NUMBER}
         env:
-          GH_TOKEN: ${{ secrets.PAT }}
+          GH_TOKEN: ${{ github.token }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
