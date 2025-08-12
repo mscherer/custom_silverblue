@@ -6,6 +6,7 @@ on:
       - main
   schedule:
     - cron: "35 2 * * *"
+  pull_request:
 
 jobs:
   build:
@@ -24,14 +25,14 @@ jobs:
           export DATE=$(date +%Y%m%d)
           # use that here since the variable are not present before start, so can't be in env
           export LOGIN=$GITHUB_REPOSITORY_OWNER
-
-          echo $PASSWORD | docker login $REGISTRY -u $LOGIN --password-stdin
-
           export IMAGE=$LOGIN/bootc
 
           docker build . --tag $REGISTRY/$IMAGE:$DATE --tag $REGISTRY/$IMAGE:latest
-          docker push $REGISTRY/$IMAGE:latest
-          docker push $REGISTRY/$IMAGE:$DATE
+          if [[ ${GITHUB_REF} == 'refs/heads/main' &&  ${GITHUB_EVENT_NAME} == 'push' ]] || [[ ${GITHUB_EVENT_NAME} == 'schedule' ]]; then
+            echo $PASSWORD | docker login $REGISTRY -u $LOGIN --password-stdin
+            docker push $REGISTRY/$IMAGE:latest
+            docker push $REGISTRY/$IMAGE:$DATE
+          fi;
         env:
           REGISTRY: ghcr.io
           PASSWORD: ${{ secrets.GITHUB_TOKEN }}
