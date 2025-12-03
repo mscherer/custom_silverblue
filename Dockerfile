@@ -1,4 +1,4 @@
-FROM quay.io/fedora-ostree-desktops/silverblue:42@sha256:33f7bbaa86fa1e98db631950f5a060e9f271bbab92f44c288275537e17d3d658
+FROM quay.io/fedora-ostree-desktops/silverblue:42@sha256:fb212a9f71c586fd0907d9dc37b716fd4dffc8d15900d8b7fbd0547743602a06
 #
 # empty space for easier rebasing
 #
