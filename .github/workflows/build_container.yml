@@ -11,7 +11,7 @@ on:
 jobs:
   build:
     name: Build image
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     permissions: 
       contents: read
       packages: write
@@ -27,11 +27,11 @@ jobs:
           export LOGIN=$GITHUB_REPOSITORY_OWNER
           export IMAGE=$LOGIN/bootc
 
-          docker build . --tag $REGISTRY/$IMAGE:$DATE --tag $REGISTRY/$IMAGE:latest
+          podman build . --tag $REGISTRY/$IMAGE:$DATE --tag $REGISTRY/$IMAGE:latest
           if [[ ${GITHUB_REF} == 'refs/heads/main' &&  ${GITHUB_EVENT_NAME} == 'push' ]] || [[ ${GITHUB_EVENT_NAME} == 'schedule' ]]; then
-            echo $PASSWORD | docker login $REGISTRY -u $LOGIN --password-stdin
-            docker push $REGISTRY/$IMAGE:latest
-            docker push $REGISTRY/$IMAGE:$DATE
+            echo $PASSWORD | podman login $REGISTRY -u $LOGIN --password-stdin
+            podman push $REGISTRY/$IMAGE:latest
+            podman push $REGISTRY/$IMAGE:$DATE
           fi;
         env:
           REGISTRY: ghcr.io
