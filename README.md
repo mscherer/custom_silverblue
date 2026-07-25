@@ -10,6 +10,7 @@ A custom build of Silverblue, using github actions
 - gnome-terminal: I do not like the new terminal from silverblue
 - redhat-display-fonts: Not sure why, I guess I liked one of the font
 - mozilla-https-everywhere: Could be removed since that's now upstream in Firefox
+- aerc: newer than mutt and I can ask upstream question at work
 
 ## Packages removed
 
