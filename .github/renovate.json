@@ -1,0 +1,11 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "automergeStrategy": "rebase",
+  "platformAutomerge": true,
+  "packageRules": [
+    {
+      "matchManagers": ["pre-commit"],
+      "automerge": true
+    }
+  ]
+}
